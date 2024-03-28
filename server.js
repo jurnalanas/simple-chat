@@ -8,6 +8,7 @@ import {formatMessage} from './utils/messages.js'
 import * as chatHelpers from './utils/users.js'
 import { fileURLToPath } from 'url'
 
+// Set static folder
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
@@ -15,13 +16,13 @@ const app = express()
 const server = http.createServer(app)
 const io = new Server(server)
 
-// Set static folder
 app.use(express.static(path.join(__dirname, 'public')))
 
 const botName = 'SimpleChat Bot'
 
 // Run when client connects
 io.on('connection', socket => {
+  // asking the server to show you the details of that internal mechanism, which is usually helpful for debugging purposes during development.
   console.log(io.of('/').adapter)
 
   socket.on('joinRoom', ({
@@ -30,6 +31,7 @@ io.on('connection', socket => {
   }) => {
     const user = chatHelpers.userJoin(socket.id, username, room)
 
+    // this function allows a client to join a specific chat room. Rooms are a way to group clients for targeted messaging.
     socket.join(user.room)
 
     // Welcome current user

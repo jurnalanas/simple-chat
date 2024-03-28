@@ -52,7 +52,7 @@ function outputMessage(message) {
   const div = document.createElement('div');
   div.classList.add('message');
 
-  const header = document.createElement('header');
+  const header = document.createElement('div');
   header.classList.add('meta');
   div.appendChild(header);
 
