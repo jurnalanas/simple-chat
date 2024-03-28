@@ -1,0 +1,20 @@
+{
+  "name": "simplechat",
+  "version": "1.0.0",
+  "description": "Simple Realtime chat app with rooms",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "Anas",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
