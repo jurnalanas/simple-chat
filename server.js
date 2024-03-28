@@ -18,7 +18,7 @@ const io = new Server(server)
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-const botName = 'SimpleChat Bot'
+const BOT_NAME = 'SimpleChat Bot'
 
 // Run when client connects
 io.on('connection', socket => {
@@ -35,14 +35,14 @@ io.on('connection', socket => {
     socket.join(user.room)
 
     // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Welcome to SimpleChat!'))
+    socket.emit('message', formatMessage(BOT_NAME, 'Welcome to SimpleChat!'))
 
     // Broadcast when a user connects
     socket.broadcast
       .to(user.room)
       .emit(
         'message',
-        formatMessage(botName, `${user.username} has joined the chat`)
+        formatMessage(BOT_NAME, `${user.username} has joined the chat`)
       )
 
     // Send users and room info
@@ -65,7 +65,7 @@ io.on('connection', socket => {
     if (user) {
       io.to(user.room).emit(
         'message',
-        formatMessage(botName, `${user.username} has left the chat`)
+        formatMessage(BOT_NAME, `${user.username} has left the chat`)
       )
 
       // Send users and room info
