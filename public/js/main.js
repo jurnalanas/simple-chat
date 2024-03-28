@@ -40,7 +40,6 @@ chatForm.addEventListener('submit', (e) => {
   }
 
   // Emit message to server
-  // EXPLAIN: sebelum emit liatin console log dulu aja
   socket.emit('chatMessage', msg);
 
   // Clear input
@@ -81,14 +80,6 @@ function outputRoomName(room) {
 }
 
 // basic sanitazion
-// You should replace this with a more comprehensive sanitization library like DOMPurify for production environments.
-/*
-Sanitizing is important because it helps prevent malicious code from being injected into your website and potentially harming your users or your application.
-example:
-<script>alert("You've been hacked!");
- ...More harmful code here, e.g., stealing cookies or redirecting the user
-</script>
-*/
 function sanitize(input) {
   const div = document.createElement('div');
   div.textContent = input;
